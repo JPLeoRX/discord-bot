@@ -1,12 +1,10 @@
-package org.javacord.examplebot;
+package io.github.jpleorx.discordbot;
 
-import org.javacord.examplebot.command.CopyAvatarCommand;
-import org.javacord.examplebot.command.HelloWorldCommand;
-import org.javacord.examplebot.command.SuicideCommand;
-import org.javacord.examplebot.command.UserInfoCommand;
-import org.javacord.DiscordApi;
-import org.javacord.DiscordApiBuilder;
-import org.javacord.util.logging.LoggerUtil;
+import io.github.jpleorx.discordbot.command.HelloWorldCommand;
+import io.github.jpleorx.discordbot.command.SuicideCommand;
+import org.javacord.api.DiscordApi;
+import org.javacord.api.DiscordApiBuilder;
+import org.javacord.api.util.logging.FallbackLoggerConfiguration;
 
 public class Main {
 
@@ -17,7 +15,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // Enable debugging, if no slf4j logger was found
-        LoggerUtil.setDebug(true);
+        FallbackLoggerConfiguration.setDebug(true);
 
         // The token is the first argument of the program
         String token = "NDUwNDA1NDUzMjk4NTMyMzUy.DeywTA._VGqeNxB8uxHjLGW6ZWIxAKBn_E";
@@ -29,8 +27,6 @@ public class Main {
         System.out.println("You can invite me by using the following url: " + api.createBotInvite());
 
         // Add listeners
-        api.addMessageCreateListener(new CopyAvatarCommand());
-        api.addMessageCreateListener(new UserInfoCommand());
         api.addMessageCreateListener(new HelloWorldCommand());
         api.addMessageCreateListener(new SuicideCommand());
 

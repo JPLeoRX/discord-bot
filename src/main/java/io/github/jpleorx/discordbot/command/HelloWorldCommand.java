@@ -1,8 +1,7 @@
-package org.javacord.examplebot.command;
+package io.github.jpleorx.discordbot.command;
 
-import org.javacord.entity.message.embed.EmbedBuilder;
-import org.javacord.event.message.MessageCreateEvent;
-import org.javacord.listener.message.MessageCreateListener;
+import org.javacord.api.event.message.MessageCreateEvent;
+import org.javacord.api.listener.message.MessageCreateListener;
 
 public class HelloWorldCommand implements MessageCreateListener {
     @Override

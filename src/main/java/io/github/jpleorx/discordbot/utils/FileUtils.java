@@ -1,4 +1,4 @@
-package org.javacord.examplebot.utils;
+package io.github.jpleorx.discordbot.utils;
 
 import java.io.File;
 

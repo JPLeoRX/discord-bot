@@ -4,42 +4,72 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.javacord.examplebot</groupId>
-    <artifactId>examplebot</artifactId>
+    <groupId>io.github.jpleorx</groupId>
+    <artifactId>discord-bot</artifactId>
     <version>1.0.0</version>
-    <name>ExampleBot</name>
-    <description>A simple example bot to demonstrate the Javacord library.</description>
+    <packaging>jar</packaging>
 
+    <name>Discord Bot</name>
+    <description>Simple Discord Bot</description>
+
+    <!-- Developers -->
+    <developers>
+        <developer>
+            <name>Leo Ertuna</name>
+            <email>leo.ertuna@gmail.com</email>
+        </developer>
+    </developers>
+
+    <!-- Repositories -->
     <repositories>
+        <!-- Javacord 3 Repository -->
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
     </repositories>
 
+    <!-- Properties -->
+    <properties>
+        <java.version>1.8</java.version>
+        <maven-shade-plugin.version>2.3</maven-shade-plugin.version>
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+
+        <javacord.version>6ad0034</javacord.version>
+        <logback.version>1.2.3</logback.version>
+    </properties>
+
+    <!-- Dependencies -->
     <dependencies>
         <!-- The Javacord dependency -->
         <dependency>
-            <groupId>de.btobastian</groupId>
-            <artifactId>Javacord</artifactId>
-            <version>0c08124</version>
+            <groupId>de.btobastian.Javacord</groupId>
+            <artifactId>javacord</artifactId>
+            <version>${javacord.version}</version>
+            <type>pom</type>
         </dependency>
 
         <!-- The logging framework. We use logback-classic. -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <version>${logback.version}</version>
         </dependency>
     </dependencies>
 
+    <!-- Build -->
     <build>
+        <!-- Final Name -->
+        <finalName>Discord Bot</finalName>
+
+        <!-- Plugins -->
         <plugins>
-            <!-- Include the dependencies into the final jar -->
+            <!-- Maven Shade Plugin - Includes all the dependencies into the final jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
+                <version>${maven-shade-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -58,25 +88,29 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
-            <!-- Build an executable JAR -->
+
+            <!-- Maven Jar Plugin - We need this to build an executable JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>org.javacord.examplebot.Main</mainClass>
+                            <mainClass>io.github.jpleorx.discordbot.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
