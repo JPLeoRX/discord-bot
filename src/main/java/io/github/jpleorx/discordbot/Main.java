@@ -2,6 +2,10 @@ package io.github.jpleorx.discordbot;
 
 import io.github.jpleorx.discordbot.command.HelloWorldCommand;
 import io.github.jpleorx.discordbot.command.SuicideCommand;
+import io.github.jpleorx.discordbot.command.mafia_game.MafiaDayCommand;
+import io.github.jpleorx.discordbot.command.mafia_game.MafiaEndCommand;
+import io.github.jpleorx.discordbot.command.mafia_game.MafiaNightCommand;
+import io.github.jpleorx.discordbot.command.mafia_game.MafiaStartCommand;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.util.logging.FallbackLoggerConfiguration;
@@ -29,6 +33,10 @@ public class Main {
         // Add listeners
         api.addMessageCreateListener(new HelloWorldCommand());
         api.addMessageCreateListener(new SuicideCommand());
+        api.addMessageCreateListener(new MafiaDayCommand());
+        api.addMessageCreateListener(new MafiaNightCommand());
+        api.addMessageCreateListener(new MafiaStartCommand());
+        api.addMessageCreateListener(new MafiaEndCommand());
 
         // Log a message, if the bot joined or left a server
         api.addServerJoinListener(event -> System.out.println("Joined server " + event.getServer().getName()));
