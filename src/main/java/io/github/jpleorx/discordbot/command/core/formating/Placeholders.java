@@ -1,4 +1,4 @@
-package io.github.jpleorx.discordbot.command.core;
+package io.github.jpleorx.discordbot.command.core.formating;
 
 /**
  * This will be a storage of text placeholders

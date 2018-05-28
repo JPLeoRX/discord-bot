@@ -1,7 +1,6 @@
 package io.github.jpleorx.discordbot.command.core.command;
 
-import io.github.jpleorx.discordbot.command.core.Placeholders;
-import io.github.jpleorx.discordbot.command.core.reply.Reply;
+import io.github.jpleorx.discordbot.command.core.formating.Placeholders;
 import io.github.jpleorx.discordbot.command.core.reply.TextReply;
 import org.javacord.api.event.message.MessageCreateEvent;
 

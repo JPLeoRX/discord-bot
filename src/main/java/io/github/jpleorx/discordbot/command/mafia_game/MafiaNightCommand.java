@@ -1,6 +1,6 @@
 package io.github.jpleorx.discordbot.command.mafia_game;
 
-import io.github.jpleorx.discordbot.command.core.Placeholders;
+import io.github.jpleorx.discordbot.command.core.formating.Placeholders;
 import io.github.jpleorx.discordbot.command.core.command.TextCommand;
 import io.github.jpleorx.discordbot.command.core.reply.TextBlockReply;
 
