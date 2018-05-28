@@ -1,6 +1,5 @@
 package io.github.jpleorx.discordbot.command.mafia_game;
 
-import io.github.jpleorx.discordbot.command.core.command.NoArgumentsCommand;
 import io.github.jpleorx.discordbot.command.core.command.TextCommand;
 import io.github.jpleorx.discordbot.command.core.reply.TextBlockReply;
 
