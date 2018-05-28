@@ -1,8 +1,8 @@
 package io.github.jpleorx.discordbot.command.core.command;
 
-import io.github.jpleorx.discordbot.command.core.MessageListener;
 import io.github.jpleorx.discordbot.command.core.reply.Reply;
 import org.javacord.api.event.message.MessageCreateEvent;
+import org.javacord.api.listener.message.MessageCreateListener;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  * @author Leo Ertuna
  * @since 28.05.2018 20:34
  */
-public interface Command extends MessageListener {
+public interface Command extends MessageCreateListener {
     /**
      * What's the command of this listener
      * @return command
