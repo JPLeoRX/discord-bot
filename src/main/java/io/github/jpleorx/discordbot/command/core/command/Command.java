@@ -24,14 +24,14 @@ public interface Command extends MessageCreateListener {
      * Build a reply object from no-argument command
      * @return reply
      */
-    Reply getReply();
+    Reply getReply(MessageCreateEvent event);
 
     /**
      * Build a reply object from command with arguments
      * @param args list of arguments
      * @return reply
      */
-    Reply getReply(List<String> args);
+    Reply getReply(MessageCreateEvent event, List<String> args);
 
     /**
      * What to do when a new message is created
@@ -53,7 +53,7 @@ public interface Command extends MessageCreateListener {
             // If there are no arguments
             if (requestArguments.isEmpty()) {
                 // Get the reply
-                Reply reply = this.getReply();
+                Reply reply = this.getReply(event);
 
                 // Send the reply
                 reply.send(event.getChannel());
@@ -62,7 +62,7 @@ public interface Command extends MessageCreateListener {
             // But if there are many arguments
             else {
                 // Get the reply
-                Reply reply = this.getReply(requestArguments);
+                Reply reply = this.getReply(event, requestArguments);
 
                 // Send the reply
                 reply.send(event.getChannel());
