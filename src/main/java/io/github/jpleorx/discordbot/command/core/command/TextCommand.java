@@ -16,7 +16,7 @@ import java.util.List;
  * @author Leo Ertuna
  * @since 28.05.2018 21:10
  */
-public interface TextCommand extends Command {
+public interface TextCommand<R extends TextReply> extends Command {
     /**
      * What's the command of this listener
      * @return command
@@ -36,18 +36,25 @@ public interface TextCommand extends Command {
      */
     String getMessageFullArguments();
 
+    /**
+     * Create a reply object
+     * @param replyText full reply text
+     * @return reply
+     */
+    R createReply(String replyText);
+
     @Override
-    default Reply getReply(MessageCreateEvent event) {
+    default TextReply getReply(MessageCreateEvent event) {
         long authorId = event.getMessage().getAuthor().getId();
         String authorMention = "<@" + authorId + ">";
         String fullReply = this.getMessageNoArguments().replace(Placeholders.USER_MENTION, authorMention);
-        return new TextReply(fullReply);
+        return this.createReply(fullReply);
     }
 
     @Override
-    default Reply getReply(MessageCreateEvent event, List<String> args) {
+    default TextReply getReply(MessageCreateEvent event, List<String> args) {
         String userMention = args.get(0);
         String fullReply = this.getMessageFullArguments().replace(Placeholders.USER_MENTION, userMention);
-        return new TextReply(fullReply);
+        return this.createReply(fullReply);
     }
 }
